@@ -4,5 +4,6 @@
     "dockerfile": "Dockerfile"
   },
   "runArgs": ["--privileged"],
-  "postCreateCommand": "chmod +x .devcontainer/start-desktop.sh"
+  "postCreateCommand": "chmod +x .devcontainer/start-desktop.sh",
+  "postStartCommand": ".devcontainer/start-desktop.sh"
 }
