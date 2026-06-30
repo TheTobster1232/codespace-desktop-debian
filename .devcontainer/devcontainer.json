@@ -1,0 +1,8 @@
+{
+  "name": "Debian Desktop Codespace",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "runArgs": ["--privileged"],
+  "postCreateCommand": "chmod +x .devcontainer/start-desktop.sh"
+}
