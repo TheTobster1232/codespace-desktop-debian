@@ -1,11 +1,20 @@
 #!/bin/bash
 
-Xvfb :1 -screen 0 1280x800x24 &
+# Kill old sessions
+pkill Xvfb 2>/dev/null
+pkill x11vnc 2>/dev/null
+pkill fluxbox 2>/dev/null
+pkill openbox 2>/dev/null
 
-export DISPLAY=:1
+# Start fresh display
+Xvfb :2 -screen 0 1280x800x24 &
+export DISPLAY=:2
 
-xfce4-session &
+# Start window manager
+openbox &
 
-x11vnc -display :1 -rfbauth /root/.vnc/passwd -forever -shared -rfbport 5901 &
+# Start VNC
+x11vnc -display :2 -nopw -forever -shared -rfbport 5902 &
 
-websockify --web=/usr/share/novnc/ 6080 localhost:5901
+# Start noVNC
+websockify --web=/usr/share/novnc/ 6082 localhost:5902
