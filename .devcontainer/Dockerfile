@@ -5,9 +5,8 @@ RUN apt update && apt install -y \
     xvfb \
     novnc \
     websockify \
-    openbox \
+    lxde \
     firefox-esr \
-    tint2 \
     curl \
     wget \
     git \
