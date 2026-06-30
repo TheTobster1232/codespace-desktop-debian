@@ -1,13 +1,12 @@
-Codespace Desktop (Debian)
-This repository provides a lightweight Linux desktop environment inside GitHub Codespaces using:
+Codespace Desktop (Ubuntu + XFCE)
+This repository provides a smooth, stable Linux desktop environment inside GitHub Codespaces using:
 
-• Xvfb (virtual display)
-• LXDE (full desktop environment)
-• x11vnc (VNC server)
+• XFCE (full desktop environment)
+• TigerVNC (high‑performance VNC server)
 • noVNC (browser viewer)
-• Chromium + Firefox ESR (web browsers)
+• Chromium (recommended browser)
 
-LXDE is used because it provides a full, stable desktop that does not turn black when windows close.
+This setup is optimized for stability, smooth video playback, and zero connection errors. It is significantly more reliable than LXDE/x11vnc and works consistently for all Codespaces users.
 
 Start the Desktop
 Open a Codespace for this repository.
@@ -19,86 +18,83 @@ In the terminal, run:
 Wait 5–10 seconds for the desktop to initialize.
 
 Open the Desktop (VNC Viewer)
-At the bottom of the Codespaces window, click the Ports tab.
+Open the Ports tab at the bottom of the Codespaces window.
 
 Find the port labeled 6082.
 
-Click Open in Browser next to port 6082.
+Click Open in Browser.
 
-When the browser tab opens, add /vnc.html to the end of the URL.
+Add /vnc.html to the end of the URL.
 
 Example:
+
 https://<codespace-name>-6082.app.github.dev/vnc.html
 
-Replace <codespace-name> with the actual name shown in your browser tab.
-
-This loads the full LXDE desktop.
+This loads the full XFCE desktop inside your browser.
 
 Using the Desktop
-Once the desktop loads, you will see:
+Once loaded, you will see:
 
-• LXDE panel at the bottom
-• Menu button (bottom‑left corner, like the Windows Start button)
-• Desktop icons
+• XFCE panel
+• Application menu
 • File manager
-• Stable session that stays visible even when windows close
+• Chromium browser
+• A stable session that does not disconnect or crash
 
-Opening Chromium (recommended for speed)
-Click the bottom‑left Start button → Internet → Chromium Web Browser
+Opening Chromium
+Applications Menu → Internet → Chromium Web Browser
 
-Chromium is faster inside VNC and gives higher speed‑test results than Firefox ESR.
+Chromium provides the best performance for video playback inside VNC.
 
-Opening Firefox ESR
-Click the bottom‑left Start button → Internet → Firefox ESR
-
-VPN Extension (Recommended)
-Inside Chromium or Firefox, install:
+VPN Extension (Optional)
+If you need a VPN inside the desktop, install:
 
 Browsec VPN
+(Chrome Web Store → “Add to Chrome”)
 
-It is lightweight, free, requires no account, and works reliably inside Codespaces.
-
-To install it:
-
-Open Chromium
-
-Go to the Chrome Web Store
-
-Search “Browsec VPN”
-
-Click “Add to Chrome”
+Note: Browser‑based VPNs are slower than Azure’s direct connection. Expect around 30–40 Mb/s instead of multi‑gigabit speeds.
 
 Important: WebGL Does Not Work
-WebGL is not supported inside this desktop environment.
+WebGL and GPU acceleration are not supported inside Codespaces desktops.
 
-This is because:
+This is expected because:
 
-• Codespaces containers do not provide GPU acceleration
-• Xvfb is a software-only virtual display
-• VNC/noVNC cannot forward GPU contexts
-• Chromium and Firefox fall back to “software rendering only”
+• Containers do not provide GPU access
+• TigerVNC and noVNC use software rendering
+• Chromium falls back to “software rendering only”
 
 This means:
 
 • WebGL sites will not load
-• 3D graphics will not render
-• GPU-accelerated features will be disabled
-• Browser-based games and 3D apps will not work
+• 3D browser apps will not run
+• GPU‑accelerated features are disabled
 
-This is normal and expected for all cloud desktops using Xvfb + VNC.
+Video playback still works smoothly.
+
+Video Playback Tips
+For the smoothest experience:
+
+• Use Chromium
+• Use 720p or 480p for best motion
+• Avoid fullscreen (Theater Mode is smoother)
+• Disable VPN while watching videos
+• Keep resolution at 1280×800 for best performance
 
 Troubleshooting
 If the desktop does not appear:
 
-• Run the start script again:
-.devcontainer/start-desktop.sh
+• Run the start script again
 • Refresh the VNC page
-• Make sure you clicked port 6082  
-• Make sure you added /vnc.html at the end of the URL
-• If the screen is black, wait a few seconds — LXDE may still be loading
+• Ensure you added /vnc.html
+• Ensure port 6082 is open
+• Rebuild the Codespace if needed
+
+TigerVNC does not use Xauthority cookies, so you will not see “Failed to connect” errors.
 
 Repo Structure
 .devcontainer/
-• devcontainer.json
 • Dockerfile
+• devcontainer.json
 • start-desktop.sh
+
+readme.md
