@@ -38,14 +38,14 @@ Using the Desktop
 Once the desktop loads, you will see:
 
 • LXDE panel at the bottom
-• Menu button
+• Menu button (bottom‑left corner, like the Windows Start button)
 • Desktop icons
 • File manager
 • Stable session that stays visible even when windows close
 
 To open Firefox:
 
-Menu → Internet → Firefox ESR
+Click the bottom‑left Start button → Internet → Firefox ESR
 
 Troubleshooting
 If the desktop does not appear:
