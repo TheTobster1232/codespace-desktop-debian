@@ -7,6 +7,7 @@ RUN apt update && apt install -y \
     websockify \
     openbox \
     firefox-esr \
+    tint2 \
     curl \
     wget \
     git \
