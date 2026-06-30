@@ -5,5 +5,5 @@
   },
   "runArgs": ["--privileged"],
   "postCreateCommand": "chmod +x .devcontainer/start-desktop.sh",
-  "postStartCommand": ".devcontainer/start-desktop.sh"
+  "postStartCommand": ".devcontainer/start-desktop.sh &"
 }
