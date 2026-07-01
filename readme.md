@@ -15,16 +15,11 @@ In the terminal, run:
 
 .devcontainer/start-desktop.sh
 
-Wait 5–10 seconds for the desktop to start.
+When the script starts, it will ask you to create a VNC password.
+Enter a password of your choice, then confirm it when prompted.
+This password will be used when connecting through noVNC.
 
-VNC Password Setup
-TigerVNC requires a password file before it can start.
-The start script automatically creates this file and launches TigerVNC using:
-
-vncserver :1 -geometry 1280x800 -depth 24
-
-This command starts the desktop session on display :1 with a resolution of 1280×800.
-The password file is generated automatically so users do not need to configure anything manually.
+After setting the password, wait 5–10 seconds for the desktop to finish starting.
 
 Open the Desktop (noVNC Viewer)
 Open the Ports tab at the bottom of the Codespaces window.
@@ -39,7 +34,8 @@ Example:
 
 https://<codespace-name>-6082.app.github.dev/vnc.html
 
-This loads the XFCE desktop inside your browser.
+Enter the VNC password you created when prompted.
+The XFCE desktop will load inside your browser.
 
 Using the Desktop
 Once loaded, you will see:
@@ -87,3 +83,5 @@ Repository Structure
 • Dockerfile
 • devcontainer.json
 • start-desktop.sh
+
+readme.md
