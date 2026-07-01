@@ -4,7 +4,7 @@ This repository provides a lightweight Linux desktop environment inside GitHub C
 • XFCE (full desktop environment)
 • TigerVNC (VNC server)
 • noVNC (browser viewer)
-• Chromium (recommended browser)
+• Firefox and Chromium (preinstalled)
 
 The setup is designed to be stable, smooth, and easy for anyone to launch inside a Codespace.
 
@@ -15,11 +15,7 @@ In the terminal, run:
 
 .devcontainer/start-desktop.sh
 
-When the script starts, it will ask you to create a VNC password.
-Enter a password of your choice, then confirm it when prompted.
-This password will be used when connecting through noVNC.
-
-After setting the password, wait 5–10 seconds for the desktop to finish starting.
+Wait 5–10 seconds for the desktop to start.
 
 Open the Desktop (noVNC Viewer)
 Open the Ports tab at the bottom of the Codespaces window.
@@ -34,8 +30,8 @@ Example:
 
 https://<codespace-name>-6082.app.github.dev/vnc.html
 
-Enter the VNC password you created when prompted.
-The XFCE desktop will load inside your browser.
+The desktop will load immediately.
+No password is required.
 
 Using the Desktop
 Once loaded, you will see:
@@ -43,9 +39,11 @@ Once loaded, you will see:
 • XFCE panel
 • Application menu
 • File manager
-• Chromium browser
+• Firefox
+• Chromium
 
-Opening Chromium
+Opening the browsers
+Applications Menu → Internet → Firefox
 Applications Menu → Internet → Chromium Web Browser
 
 Chromium provides the best performance for video playback inside VNC.
@@ -57,7 +55,7 @@ Browser‑based VPNs are slower than Azure’s direct connection, so speeds may 
 
 WebGL and GPU Acceleration
 GPU acceleration is not available inside Codespaces containers.
-Chromium will run in software rendering mode, which is expected.
+Chromium and Firefox will run in software rendering mode, which is expected.
 Video playback still works smoothly.
 
 Video Playback Tips
