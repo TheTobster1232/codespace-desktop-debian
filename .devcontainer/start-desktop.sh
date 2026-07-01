@@ -1,14 +1,12 @@
 #!/bin/bash
 
-# Create VNC passwordless config
+# Create VNC password
 mkdir -p ~/.vnc
-echo "" > ~/.vnc/passwd
-chmod 600 ~/.vnc/passwd
+vncpasswd
 
 # Start XFCE session
 export DISPLAY=:1
-vncserver :1 -geometry 1280x800 -depth 24 &
-sleep 3
+vncserver :1 -geometry 1280x800 -depth 24
 
 # Start noVNC
-websockify --web=/usr/share/novnc/ 6082 localhost:5901 &
+websockify --web=/usr/share/novnc/ 6082 localhost:5901
