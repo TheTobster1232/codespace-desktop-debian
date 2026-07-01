@@ -1,12 +1,12 @@
 Codespace Desktop (Ubuntu + XFCE)
-This repository provides a smooth, stable Linux desktop environment inside GitHub Codespaces using:
+This repository provides a lightweight, stable Linux desktop environment inside GitHub Codespaces using:
 
 • XFCE (full desktop environment)
 • TigerVNC (high‑performance VNC server)
-• noVNC (browser viewer)
+• noVNC (browser‑based VNC viewer)
 • Chromium (recommended browser)
 
-This setup is optimized for stability, smooth video playback, and zero connection errors. It is significantly more reliable than LXDE/x11vnc and works consistently for all Codespaces users.
+This setup is designed for smooth video playback, reliable performance, and consistent behaviour across all Codespaces instances.
 
 Start the Desktop
 Open a Codespace for this repository.
@@ -20,7 +20,7 @@ Wait 5–10 seconds for the desktop to initialize.
 Open the Desktop (VNC Viewer)
 Open the Ports tab at the bottom of the Codespaces window.
 
-Find the port labeled 6082.
+Locate the port labeled 6082.
 
 Click Open in Browser.
 
@@ -30,7 +30,7 @@ Example:
 
 https://<codespace-name>-6082.app.github.dev/vnc.html
 
-This loads the full XFCE desktop inside your browser.
+This will load the full XFCE desktop inside your browser.
 
 Using the Desktop
 Once loaded, you will see:
@@ -39,59 +39,53 @@ Once loaded, you will see:
 • Application menu
 • File manager
 • Chromium browser
-• A stable session that does not disconnect or crash
+• A stable session that remains connected
 
 Opening Chromium
 Applications Menu → Internet → Chromium Web Browser
 
 Chromium provides the best performance for video playback inside VNC.
 
+VNC Startup Behaviour
+The desktop uses TigerVNC with passwordless authentication so that noVNC can connect immediately without prompting for credentials.
+The start script automatically prepares the VNC environment and launches TigerVNC with authentication disabled, ensuring a smooth and consistent connection for all users.
+
 VPN Extension (Optional)
-If you need a VPN inside the desktop, install:
+If you need a VPN inside the desktop, you can install:
 
 Browsec VPN
 (Chrome Web Store → “Add to Chrome”)
 
 Note: Browser‑based VPNs are slower than Azure’s direct connection. Expect around 30–40 Mb/s instead of multi‑gigabit speeds.
 
-Important: WebGL Does Not Work
-WebGL and GPU acceleration are not supported inside Codespaces desktops.
-
-This is expected because:
-
-• Containers do not provide GPU access
-• TigerVNC and noVNC use software rendering
-• Chromium falls back to “software rendering only”
-
-This means:
-
-• WebGL sites will not load
-• 3D browser apps will not run
-• GPU‑accelerated features are disabled
+WebGL and GPU Acceleration
+WebGL and GPU acceleration are not available inside Codespaces desktops.
+Containers do not provide GPU access, and TigerVNC uses software rendering.
+Chromium will operate in software rendering mode, which is expected.
 
 Video playback still works smoothly.
 
 Video Playback Tips
-For the smoothest experience:
+For the best experience:
 
 • Use Chromium
-• Use 720p or 480p for best motion
-• Avoid fullscreen (Theater Mode is smoother)
+• Use 720p or 480p for smoother motion
+• Avoid fullscreen (Theater Mode performs better)
 • Disable VPN while watching videos
-• Keep resolution at 1280×800 for best performance
+• Keep the desktop resolution at 1280×800
 
 Troubleshooting
 If the desktop does not appear:
 
 • Run the start script again
 • Refresh the VNC page
-• Ensure you added /vnc.html
-• Ensure port 6082 is open
+• Ensure /vnc.html is added to the URL
+• Confirm port 6082 is open
 • Rebuild the Codespace if needed
 
-TigerVNC does not use Xauthority cookies, so you will not see “Failed to connect” errors.
+TigerVNC does not rely on Xauthority cookies, so connection errors are rare.
 
-Repo Structure
+Repository Structure
 .devcontainer/
 • Dockerfile
 • devcontainer.json
